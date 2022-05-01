@@ -1,0 +1,7 @@
+list of mistakes:
+
+1:29
+Had assumed the question prompt was regarding sorting strings relative to
+other strings alphabetically by first letter, but realize prompt can be
+asking instead to sort a single string one million times, so copying code
+into a new file named sortstring.cpp to edit
