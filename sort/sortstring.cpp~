@@ -4,6 +4,8 @@
 
 using namespace std;
 
+bool cstr_cmp(const char* &a, const char* &b);
+
 int main() 
 {
 
@@ -49,16 +51,19 @@ int main()
 
 
     // sort string array
-    sort(begin(str_arr), end(str_arr));
+//    sort(begin(str_arr), end(str_arr));
 
     cout << "sorted ascending: \n";
     for(auto str: str_arr){
-         cout << str << endl;
+        sort(begin(str), end(str));
+
+        cout << str << endl;
     }
 
-    sort(begin(str_arr), end(str_arr), greater<string>());
+//    sort(begin(str_arr), end(str_arr), greater<string>());
     cout << "sorted descending: \n";
     for(auto str: str_arr) {
+        sort(begin(str), end(str), greater<char>());
         cout << str << endl;
     }
 
@@ -82,25 +87,44 @@ int main()
             rand_str[i] = alphanumeric[char_index];
         }
         
-        rand_str[str_len] = '\0';
+        rand_str[str_len] = 0;
 
         cout << rand_str << endl;
 
         c_str_arr[j] = rand_str;
+
+        // test sorting here
+//        sort(rand_str[0], rand_str[strlen(rand_str) - 1], cstr_cmp);
+        int size = sizeof(rand_str) / sizeof(rand_str[0]);
+        sort(rand_str, rand_str + size, cstr_cmp);
+        cout << rand_str << endl;
+
+        
+//        cout << c_str_arr[j] << endl;
     }
 
 
     // sort string array
-    sort(begin(c_str_arr), end(c_str_arr));
+//    sort(begin(c_str_arr), end(c_str_arr));
 
     cout << "sorted ascending: \n";
-    for(auto str: c_str_arr){
-         cout << str << endl;
+    for(int i = 0; i < 10; i++){
+
+        char *str = c_str_arr[i];
+//        int size = sizeof(str) / sizeof(str[0]);
+        int size = strlen(str);
+        cout << "size of str: " << size << endl;
+//        sort(str, str + size, cstr_cmp);
+//        cout << str << endl;
+        printf("%s\n", str);
+        cout << c_str_arr[0] << endl;
     }
 
-    sort(begin(c_str_arr), end(c_str_arr), greater<string>());
+//    sort(begin(c_str_arr), end(c_str_arr), greater<string>());
     cout << "sorted descending: \n";
     for(auto str: c_str_arr) {
+//        sort(str[0], str[3]);
+//        sort(begin(str), end(str), greater<char>());
         cout << str << endl;
     }
 
@@ -112,3 +136,19 @@ int main()
 
     return 0;
 }
+
+
+// comparator function for c-style strings
+bool cstr_cmp(const char* &a, const char* &b) {
+    return strcmp(a, b) < 0;
+
+}
+
+
+
+
+
+
+
+
+
