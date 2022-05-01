@@ -2,17 +2,22 @@
 #include<vector>
 #include<random>
 
+#include<chrono>
 
 using namespace std;
+using namespace std::chrono;
+
 
 int main() {
 
-    int n = 20;
+    int n = 3000;
 
     std::default_random_engine generator;
     std::uniform_int_distribution<int> distribution(1,10);
 
     int dice_roll = distribution(generator);  // generates number in the range 1..6 
+
+    auto t1 = high_resolution_clock::now();
 
     vector<int> num_vec;
     for (int i = 0; i < n; i++) {
@@ -31,6 +36,10 @@ int main() {
 
     }
 
+    auto t2 = high_resolution_clock::now();
+    auto t_diff_add = duration_cast<milliseconds>(t2 - t1).count();
+
+    auto t11 = high_resolution_clock::now();
     cout << "REMOVING ELEMENTS: \n";
 
     // remove elements
@@ -49,7 +58,15 @@ int main() {
         cout << endl;
     }
 
+    auto t22 = high_resolution_clock::now();
+    auto t_diff_remove = duration_cast<milliseconds>(t2 - t1).count();
 
+    cout << "milliseconds passed to add elements: " << t_diff_add << endl;
+    cout << "milliseconds passed to remove elements: " << t_diff_remove << endl; 
+
+    cout << "milliseconds passed to add and remove elements: " << t_diff_remove+t_diff_add << endl; 
+    
+    
     return 0;
 
 }
