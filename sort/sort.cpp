@@ -20,8 +20,10 @@ int main()
 
     // get index of a char, we do -1 because indices will be from 0 to 35
     int char_index = distribution(generator) - 1; 
+
     
     cout << "ten strings: " << endl;
+    string str_arr[10];
 
     // loop ten times
     for (int j = 0; j < 10; j++) {
@@ -42,7 +44,18 @@ int main()
         }
         cout << rand_str << endl;
 
+        str_arr[j] = rand_str;
     }
+
+
+    // sort string array
+    sort(begin(str_arr), end(str_arr));
+
+    cout << "sorted ascending: \n";
+    for(auto str: str_arr){
+         cout << str << endl;
+    }
+
 
     cout << "Hello, World! and a dice roll: " << char_index  << " " << dice_roll_2 << " " << alphanumeric[char_index] << endl;
     // cout << "rand string: " << &rand_str << endl;
