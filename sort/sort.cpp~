@@ -16,6 +16,7 @@ int main()
 
     int dice_roll_2 = distribution(generator);  // generates number in the range 1..6 
 
+    int str_len = str_len_distribution(generator);
     char alphanumeric[] = "qwertyuiopasdfghjklzxcvbnm1234567890";
 
     // get index of a char, we do -1 because indices will be from 0 to 35
@@ -26,15 +27,13 @@ int main()
     // loop ten times
     for (int j = 0; j < 10; j++) {
 
-//        cout << "in loop" << endl;
-//        cout << "loop: " << j << endl;
-   
+        cout << "in loop" << endl;
+        cout << "loop: " << j << endl;
         // generate a random string
         string rand_str;
-        int str_len = str_len_distribution(generator);
         for (int i = 0; i < str_len; i++) {
 
-//            cout << i << endl;
+            cout << i << endl;
 
             int char_index = distribution(generator) - 1; 
  //           rand_str.push_back(alphanumeric[char_index]);
