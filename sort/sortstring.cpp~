@@ -5,6 +5,7 @@
 using namespace std;
 
 bool cstr_cmp(const char* &a, const char* &b);
+int cstr_qsort_asc(const void *a, const void *b);
 
 int main() 
 {
@@ -93,11 +94,23 @@ int main()
 
         c_str_arr[j] = rand_str;
 
+        // test qsort here
+        
+        cout << "printing sht: " << rand_str << endl;
+        
+        qsort(&rand_str, str_len + 1, sizeof(char), cstr_qsort_asc);
+        printf("tested qsort fr: %s\n", rand_str);
+        cout << "tested qsort: " << rand_str << endl;
+
+
+
+
+
         // test sorting here
 //        sort(rand_str[0], rand_str[strlen(rand_str) - 1], cstr_cmp);
-        int size = sizeof(rand_str) / sizeof(rand_str[0]);
-        sort(rand_str, rand_str + size, cstr_cmp);
-        cout << rand_str << endl;
+//        int size = sizeof(rand_str) / sizeof(rand_str[0]);
+//        sort(rand_str, rand_str + size, cstr_cmp);
+ //       cout << rand_str << endl;
 
         
 //        cout << c_str_arr[j] << endl;
@@ -144,7 +157,23 @@ bool cstr_cmp(const char* &a, const char* &b) {
 
 }
 
+int cstr_qsort_asc(const void *a, const void *b) {
 
+    char *aa = (char *) a;
+    char *bb = (char *) b;
+
+    if (*aa < *bb) {
+        return -1;
+    }
+    else if (*aa > *bb) {
+        return 1;
+    }
+    else {
+        return 0;
+    }
+
+    //return strcmp((char *)a, (char *)b);
+}
 
 
 
