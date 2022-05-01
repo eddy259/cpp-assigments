@@ -5,3 +5,7 @@ Had assumed the question prompt was regarding sorting strings relative to
 other strings alphabetically by first letter, but realize prompt can be
 asking instead to sort a single string one million times, so copying code
 into a new file named sortstring.cpp to edit
+
+3:44
+got qsort for a c-style string, had to write a comparator which compared
+characters instead of strings

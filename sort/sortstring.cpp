@@ -74,7 +74,7 @@ int main()
     cout << "sorted ascending qsort: \n";
     for(auto str: str_arr){
         int str_len = str.length();
-        qsort(&str, str_len, sizeof(char), cstr_qsort_asc);
+        qsort(begin(str), str_len, sizeof(char), cstr_qsort_asc);
         //sort(begin(str), end(str));
 
         cout << str << endl;
