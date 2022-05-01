@@ -19,11 +19,12 @@ int main() {
         // add an element to vector
         int rand = distribution(generator);
         num_vec.push_back(rand);
-        sort(begin(num_vec), end(num_vec));
+//        sort(begin(num_vec), end(num_vec));
+        num_vec.sort();
         
         // print out vector contents at each step
-        for (int j = 0; j < i + 1; j++) {
-            auto it = next(num_vec.begin(), j);
+        for (auto it = num_vec.begin(); it != num_vec.end(); it++) {
+//            auto it = next(num_vec.begin(), j);
             cout << *it << " ";
         }
 
