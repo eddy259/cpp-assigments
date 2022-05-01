@@ -6,6 +6,7 @@ using namespace std;
 
 bool cstr_cmp(const char* &a, const char* &b);
 int cstr_qsort_asc(const void *a, const void *b);
+int cstr_qsort_des(const void *a, const void *b);
 
 int main() 
 {
@@ -68,7 +69,20 @@ int main()
         cout << str << endl;
     }
 
+    // SORTED WITH QSORT
 
+    cout << "sorted ascending qsort: \n";
+    for(auto str: str_arr){
+        int str_len = str.length();
+        qsort(&str, str_len, sizeof(char), cstr_qsort_asc);
+        //sort(begin(str), end(str));
+
+        cout << str << endl;
+    }
+
+
+
+    cout << "--------------------------------------------";
 
 // C STYLE STRINGS ------------------------------------------
 
@@ -94,13 +108,17 @@ int main()
 
         c_str_arr[j] = rand_str;
 
-        // test qsort here
+        // test qsort here --------------------------------
         
-        cout << "printing sht: " << rand_str << endl;
+//        cout << "printing sht: " << rand_str << endl;
         
         qsort(&rand_str, str_len, sizeof(char), cstr_qsort_asc);
-        printf("tested qsort fr: %s\n", rand_str);
-        cout << "tested qsort: " << rand_str << endl;
+//        printf("tested qsort fr: %s\n", rand_str);
+        cout << "qsort ascending: " << rand_str << endl;
+
+        
+        qsort(&rand_str, str_len, sizeof(char), cstr_qsort_des);
+        cout << "qsort descending: " << rand_str << endl;
 
 
 
@@ -115,6 +133,21 @@ int main()
         
 //        cout << c_str_arr[j] << endl;
     }
+
+
+
+/*
+    // SORTED WITH QSORT
+
+    cout << "sorted ascending with qsort: \n";
+    for (auto rand_str : c_str_arr) {
+        int str_len = strlen(rand_str);
+        qsort(&rand_str, str_len, sizeof(char), cstr_qsort_asc);
+        cout << "qsorted: " << rand_str << endl;
+    }
+*/
+
+
 
 
     // sort string array
@@ -175,6 +208,22 @@ int cstr_qsort_asc(const void *a, const void *b) {
     //return strcmp((char *)a, (char *)b);
 }
 
+int cstr_qsort_des(const void *a, const void *b) {
+
+    char *aa = (char *) a;
+    char *bb = (char *) b;
+
+    if (*aa < *bb) {
+        return 1;
+    }
+    else if (*aa > *bb) {
+        return -1;
+    }
+    else {
+        return 0;
+    }
+
+}
 
 
 
