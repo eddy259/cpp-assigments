@@ -56,6 +56,56 @@ int main()
          cout << str << endl;
     }
 
+    sort(begin(str_arr), end(str_arr), greater<string>());
+    cout << "sorted descending: \n";
+    for(auto str: str_arr) {
+        cout << str << endl;
+    }
+
+
+
+// C STYLE STRINGS ------------------------------------------
+
+
+    cout << "C STYLE STRINGS: \n";
+    char *c_str_arr[10];
+
+    // loop ten times
+    for (int j = 0; j < 10; j++) {
+
+        // generate a random string
+        int str_len = str_len_distribution(generator);
+        char rand_str[str_len + 1];
+        for (int i = 0; i < str_len; i++) {
+
+            int char_index = distribution(generator) - 1; 
+            rand_str[i] = alphanumeric[char_index];
+        }
+        
+        rand_str[str_len] = '\0';
+
+        cout << rand_str << endl;
+
+        c_str_arr[j] = rand_str;
+    }
+
+
+    // sort string array
+    sort(begin(c_str_arr), end(c_str_arr));
+
+    cout << "sorted ascending: \n";
+    for(auto str: c_str_arr){
+         cout << str << endl;
+    }
+
+    sort(begin(c_str_arr), end(c_str_arr), greater<string>());
+    cout << "sorted descending: \n";
+    for(auto str: c_str_arr) {
+        cout << str << endl;
+    }
+
+
+
 
     cout << "Hello, World! and a dice roll: " << char_index  << " " << dice_roll_2 << " " << alphanumeric[char_index] << endl;
     // cout << "rand string: " << &rand_str << endl;
